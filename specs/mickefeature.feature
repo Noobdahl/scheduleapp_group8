@@ -1,11 +1,14 @@
 Feature: Se schema
 
     Scenario: Logga in
-    Given att jag är inloggad med "exempel@school.net" and "abc123"
-    Then bilden borde synas
+    Given m att jag är inloggad med "exempel@school.net" and "abc123"
+    Then m bilden borde synas
     
 
     Scenario: Titta på text i kontrollapanelen
-    Given att jag är inloggad
-    And jag är i kontrollpanelen
-    Then är jag i kontrollpanelen
+    Given m att jag är inloggad
+    And m jag är i kontrollpanelen
+    Then m är jag i kontrollpanelen
+
+    Scenario: Följa en länk till en blogg
+    Given m att jag är inloggad
