@@ -51,6 +51,11 @@ Then("g klickar på teachers", () =>{
 
 // Scenario: Följ klasslänk
 When("g klickar på klasslänk", () => {
-  click_link('header > table > thead > tr > :nth-child(3) > div > a > .fas'); 
+  cy.get('header > table > thead > tr > :nth-child(3) > div > a'); 
 })
+
+// Scenario Följ klasslänk || Inte klar ännu!!!!
+Then("g kommer till bloggen", () => {
+    cy.get('#Kram6.newton.nodehill').should('have.prop', 'href', '/');
+  })
 
