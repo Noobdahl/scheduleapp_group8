@@ -24,3 +24,4 @@ Feature: Scheduleapp
     Scenario: Följ klasslänk
     Given g att jag är inloggad med "exempel@school.net" and "abc123"
     When g klickar på klasslänk
+    
