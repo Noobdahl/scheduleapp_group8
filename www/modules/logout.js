@@ -3,4 +3,4 @@ $(async function(){
         method:'delete'
     })
     location.href='/login.html'
-})()
+})
