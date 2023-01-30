@@ -40,3 +40,8 @@ Then("g så är jag på admin sida", () => {
 Then("g klickar på teachers", () =>{
   cy.get('.RaMenuItemLink-active').click();
 })
+
+When("g klickar på klasslänk", () => {
+  cy.get('header > table > thead > tr > :nth-child(3) > div > a > .fas');
+})
+

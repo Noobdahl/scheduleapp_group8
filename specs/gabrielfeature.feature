@@ -20,3 +20,7 @@ Feature: Scheduleapp
     When g jag klickar på admin
     Then g så är jag på admin sida
     Then g klickar på teachers
+
+    Scenario: Följ klasslänk
+    Given g att jag är inloggad med "exempel@school.net" and "abc123"
+    When g klickar på klasslänk
