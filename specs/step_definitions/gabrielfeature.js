@@ -49,15 +49,5 @@ Then("g klickar på teachers", () =>{
   cy.get('.RaMenuItemLink-active').click();
 })
 
-// Scenario: Följ klasslänk
-When("g klickar på klasslänk", () => {
-  cy.get('header > table > thead > tr > :nth-child(3) > div > a'); 
-})
 
-// Scenario Följ klasslänk || Inte klar ännu!!!!
-Then("g kommer till bloggen", () => {
-  cy.visit('https://kram6.newton.nodehill.se/');
-  cy.get('.example > a').invoke('removeAttr', 'target').click();
-  cy.url().should('include', '/windows/new').cy.get('h2').should('contain', "Kravanalytiker 6");
-})
 
