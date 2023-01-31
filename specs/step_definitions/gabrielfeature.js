@@ -56,6 +56,8 @@ When("g klickar på klasslänk", () => {
 
 // Scenario Följ klasslänk || Inte klar ännu!!!!
 Then("g kommer till bloggen", () => {
-    cy.get('#Kram6.newton.nodehill').should('have.prop', 'href', '/');
-  })
+  cy.visit('https://kram6.newton.nodehill.se/');
+  cy.get('.example > a').invoke('removeAttr', 'target').click();
+  cy.url().should('include', '/windows/new').cy.get('h2').should('contain', "Kravanalytiker 6");
+})
 
