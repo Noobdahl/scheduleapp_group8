@@ -17,10 +17,12 @@ And("s kommer till admin sida", () =>{
   cy.get('.MuiCardHeader-content > .MuiTypography-root').should("contain", "Welcome");
 })
 
+
 When("s klickar på teachers", () => {
   cy.get('[href="#/teachers"]').click();
 })
 
+// La till detta som bekräftar att man kommer till teachers taben på admin sida
 Then("s kommer till teachers instälningar"), () => {
   cy.get('.column-firstname > .MuiButtonBase-root > span').should('contain', "Firstname");
 }
