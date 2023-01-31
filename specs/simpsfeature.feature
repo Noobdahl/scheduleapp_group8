@@ -1,9 +1,11 @@
 Feature: Using the program
 
-Scenario: Log in, Navigate to admin page and access "Register new teacher" tab
+Scenario: Log in, Navigate to admin page and access Register new teacher tab
 Given s that im logged in with "exempel@school.net" and "abc123"
 And s i press the admin button
-Then s i click the teacher tab
+And s kommer till admin sida
+When s klickar på teachers
+Then s kommer till teachers instälningar
 
 
     

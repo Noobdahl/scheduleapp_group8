@@ -10,11 +10,19 @@ Given("s that im logged in with {string} and {string}", (email, password) => {
 });
 
 And("s i press the admin button", () => {
-    cy.get('[onclick="location.href='/admin).click();
+    cy.get('[onclick="location.href=\'/admin\'"]').click();
 })
 
-Then("s i click the teacher tab"), () => {
-    cy.get('[href="#/teachers"]').click();
+And("s kommer till admin sida", () =>{
+  cy.get('.MuiCardHeader-content > .MuiTypography-root').should("contain", "Welcome");
+})
+
+When("s klickar på teachers", () => {
+  cy.get('[href="#/teachers"]').click();
+})
+
+Then("s kommer till teachers instälningar"), () => {
+  cy.get('.column-firstname > .MuiButtonBase-root > span').should('contain', "Firstname");
 }
 
 
