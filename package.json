@@ -34,5 +34,5 @@
     "stepDefinitions": [
       "/specs/step_definitions/*.js"
     ]
- }
+  }
 }
