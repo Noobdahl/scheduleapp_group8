@@ -59,20 +59,38 @@ And("g klickar på create knappen", () =>{
   cy.get('.MuiToolbar-root > a.MuiButton-root').click();
 })
 
-// Scenario: Lägg till något i schools
-Then("g så kan du skapa en ny skola", () =>{
-  cy.get('#react-admin-title > span').should('contain', "Register New School");
+And("g skriver in en {string}", (skola) => {
+  cy.get('#name').type(skola);
 })
 
-// Scenario: Nästa sida
-Then("g så är jag på admin sida", () =>{
-  cy.get('.MuiCardHeader-content > .MuiTypography-root').should("contain", "Welcome");
+And("g skriver in {string} för skolan", (förkortningen) =>{
+  cy.get('#shortName').type(förkortningen);
 })
 
-// Scenario: Nästa sida
-Then("g klickar på teachers", () =>{
-  cy.get('.RaMenuItemLink-active').click();
+Then("g klickar på save", () => {
+  cy.get('[data-testid="SaveIcon"]').click();
 })
+
+Then("g kommer till schools fliken", () =>{
+  cy.visit("/");
+})
+
+
+
+// // Scenario: Lägg till något i schools
+// Then("g så kan du skapa en ny skola", () =>{
+//   cy.get('#react-admin-title > span').should('contain', "Register New School");
+// })
+
+// // Scenario: Nästa sida
+// Then("g så är jag på admin sida", () =>{
+//   cy.get('.MuiCardHeader-content > .MuiTypography-root').should("contain", "Welcome");
+// })
+
+// // Scenario: Nästa sida
+// Then("g klickar på teachers", () =>{
+//   cy.get('.RaMenuItemLink-active').click();
+// })
 
 
 
