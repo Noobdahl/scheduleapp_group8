@@ -40,7 +40,7 @@ And("s that i have clicked create", () => {
   cy.get('.MuiToolbar-root > a.MuiButton-root').click();
 })
 
-And('s that i have filled out {string} and {int} and {int}', (title, unit, netPrice) => {
+And('s i have filled out {string} and {string} and {string}', (title, unit, netPrice) => {
   cy.get('#title').type(title);
   cy.get('#unit').type(unit);
   cy.get('#netPrice').type(netPrice);
