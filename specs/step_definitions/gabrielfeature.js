@@ -39,8 +39,33 @@ When("g jag klickar på admin", () =>{
   cy.get('[onclick="location.href=\'/admin\'"]').click();
 })
 
+// Scenario: Lägg till något i schools
+And("g klickar på admin", () =>{
+  cy.get('[onclick="location.href=\'/admin\'"]').click();
+})
+
+// Scenario: Lägg till något i schools
+And("g är på admin sida", () =>{
+  cy.get('.MuiCardHeader-root').should("contain", "Welcome");
+})
+
+// Scenario: Lägg till något i schools
+When("g klickar på schools fliken", () =>{
+  cy.get('[href="#/schools"]').click();
+})
+
+// Scenario: Lägg till något i schools
+And("g klickar på create knappen", () =>{
+  cy.get('.MuiToolbar-root > a.MuiButton-root').click();
+})
+
+// Scenario: Lägg till något i schools
+Then("g så kan du skapa en ny skola", () =>{
+  cy.get('#react-admin-title > span').should('contain', "Register New School");
+})
+
 // Scenario: Nästa sida
-Then("g så är jag på admin sida", () => {
+Then("g så är jag på admin sida", () =>{
   cy.get('.MuiCardHeader-content > .MuiTypography-root').should("contain", "Welcome");
 })
 
