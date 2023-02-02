@@ -52,11 +52,16 @@ Then("s i press save", () => {
 
 
 //Delete the newly created element
-
+//Goes to page 2 and checks that the url is correct for page 2
 And("s that im in page 2", () => {
   cy.get('[data-testid="NavigateNextIcon"]').click();
+  // cy.url().should('include', 'http://localhost:7655/admin/#/invoice_items?filter=%7B%7D&order=ASC&page=2&perPage=10&sort=id');
 })
 
 And("s that id {string} is marked", () => {
   
+})
+
+Then("s delete this element", () => {
+  cy.get('[data-test="bulk-actions-toolbar"] > .MuiToolbar-root > .MuiButton-root').click();
 })
