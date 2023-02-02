@@ -3,6 +3,7 @@ import { Given, When, And, Then } from "@badeball/cypress-cucumber-preprocessor"
 // Scenario: Logga in sidan
 Given("g att jag är inloggad med {string} and {string}", (email, password) => {
   cy.visit("/");
+  cy.url().should('contain', "login");
   cy.get('#email').type(email);
   cy.get("#password").type(password);
   cy.get('[type="submit"]').click(); 
@@ -34,63 +35,44 @@ Then("g kommer till admin sida", () =>{
   cy.get('.MuiCardHeader-content > .MuiTypography-root').should("contain", "Welcome");
 })
 
-// Scenario: Komma till inställningar
-When("g jag klickar på admin", () =>{
+// Scenario: Nästa sida
+And("g kommer till admin", () =>{
   cy.get('[onclick="location.href=\'/admin\'"]').click();
 })
 
-// Scenario: Lägg till något i schools
-And("g klickar på admin", () =>{
-  cy.get('[onclick="location.href=\'/admin\'"]').click();
-})
-
-// Scenario: Lägg till något i schools
-And("g är på admin sida", () =>{
-  cy.get('.MuiCardHeader-root').should("contain", "Welcome");
-})
-
-// Scenario: Lägg till något i schools
-When("g klickar på schools fliken", () =>{
+// Scenario: Nästa sida
+And("g klickar på schools fliken", () => {
   cy.get('[href="#/schools"]').click();
 })
 
-// Scenario: Lägg till något i schools
-And("g klickar på create knappen", () =>{
-  cy.get('.MuiToolbar-root > a.MuiButton-root').click();
+// Scenario: Nästa sida
+And("g klickar på pilen till nästa sida", () =>{
+  cy.get('[data-testid="NavigateNextIcon"]').click();
 })
 
-And("g skriver in en {string}", (skola) => {
-  cy.get('#name').type(skola);
+// Scenario: Nästa sida
+Then("g har hamnat på nästa sida", () =>{
+  cy.get('#main-content').should('contain', "A till O");
 })
 
-And("g skriver in {string} för skolan", (förkortningen) =>{
-  cy.get('#shortName').type(förkortningen);
+// Scenario: Markera vald Invoce item
+And("g klickar på Invoice items fliken", () =>{
+  cy.get('[onclick="location.href=\'/admin\'"]').click();
+  cy.get('[href="#/invoice_items"]').click();
 })
 
-Then("g klickar på save", () => {
-  cy.get('[data-testid="SaveIcon"]').click();
+// Scenario: Markera vald Invoce item
+And("g markerar sista elementet", () =>{
+  cy.get(':nth-child(10) > .MuiTableCell-paddingCheckbox > .MuiCheckbox-root > .PrivateSwitchBase-input').click();
+  cy.get(':nth-child(10) > .column-id').should('contain', "11");
 })
 
-Then("g kommer till schools fliken", () =>{
-  cy.visit("/");
+// Scenario: Markera vald Invoce item
+And("klickar den valda fliken", () =>{
+  cy.get('[data-test="bulk-actions-toolbar"] > .MuiToolbar-root > .MuiButton-root')
 })
 
-
-
-// // Scenario: Lägg till något i schools
-// Then("g så kan du skapa en ny skola", () =>{
-//   cy.get('#react-admin-title > span').should('contain', "Register New School");
-// })
-
-// // Scenario: Nästa sida
-// Then("g så är jag på admin sida", () =>{
-//   cy.get('.MuiCardHeader-content > .MuiTypography-root').should("contain", "Welcome");
-// })
-
-// // Scenario: Nästa sida
-// Then("g klickar på teachers", () =>{
-//   cy.get('.RaMenuItemLink-active').click();
-// })
-
-
-
+// Scenario: Markera vald Invoce item
+Then("undervisning med Net price 3kr ska vara markerad", () =>{
+  cy.get(':nth-child(10) > .column-netPrice').should('contain', "3");
+})
