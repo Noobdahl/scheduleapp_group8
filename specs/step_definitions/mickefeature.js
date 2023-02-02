@@ -59,7 +59,9 @@ Given("m att fältet {string} är ifyllt med {string}", (field, name) => {
     cy.get(field).should('have.value', name);
 })
 
-And("m jag klickar på skolan", () => {
+And("m jag valt vilken skola som ska tas bort", () => {
+    cy.get('[onclick="location.href=\'/admin\'"]').click();
+    cy.get('[href="#/schools"]').click();
     cy.wait(500);
     cy.get('[data-testid="NavigateNextIcon"]').click();
     cy.wait(500);
@@ -76,6 +78,7 @@ And("m jag klickar på skolan", () => {
 
 Then("m finns inte skolan kvar i listan", () => {
     cy.get('.MuiTableBody-root').should('not.contain', 'Newton');
+    cy.get('.MuiSnackbar-root > .MuiPaper-root').should('contain', 'Element deleted');
 })
 
 And("m jag är i teacher-tabben", () => {
@@ -85,20 +88,54 @@ And("m jag är i teacher-tabben", () => {
 
 
 
-// Then("m tas jag till create-teacher-sidan", () => {
-//     cy.url().should('contain', 'teachers/create');
-//     cy.get('#react-admin-title > span').should('contain', "Register New Teacher")
-// })
+        // Then("m tas jag till create-teacher-sidan", () => {
+        //     cy.url().should('contain', 'teachers/create');
+        //     cy.get('#react-admin-title > span').should('contain', "Register New Teacher")
+        // })
 
-// And("select", () => {
-//     cy.get('#mui-component-select-roles').click();
-//     cy.get('.MuiList-root > [tabindex="-1"]').click();
-// })
-// And("deselect",() => {
-//     cy.get('body').trigger('keydown', { keyCode: 27});
-//     cy.wait(500);
-//     cy.get('body').trigger('keyup', { keyCode: 27});
-// })
-// And("save",() => {
-//     cy.get('.RaToolbar-defaultToolbar > .MuiButton-root').click();
-// })
+        // And("select", () => {
+        //     cy.get('#mui-component-select-roles').click();
+        //     cy.get('.MuiList-root > [tabindex="-1"]').click();
+        // })
+        // And("deselect",() => {
+        //     cy.get('body').trigger('keydown', { keyCode: 27});
+        //     cy.wait(500);
+        //     cy.get('body').trigger('keyup', { keyCode: 27});
+        // })
+        // And("save",() => {
+        //     cy.get('.RaToolbar-defaultToolbar > .MuiButton-root').click();
+        // })
+
+
+
+
+
+    //NEW Gränssnitt!
+And("m jag är på admin sidan", () => {
+    cy.get('[onclick="location.href=\'/admin\'"]').click();
+    cy.url().should('contain', 'admin');
+})
+
+And("m det finns en {string} knapp", (buttonName) => {
+    cy.get(buttonName).should('be.visible');
+})
+
+And("m jag är på dashboard sidan", () => {
+    cy.get('.MuiCardHeader-content > .MuiTypography-root').should('contain', 'Welcome to the administration')
+})
+
+Then("m tas jag till {string} vyn", (pageName) => {
+    cy.url().should('contain', pageName);
+})
+
+Given("m jag är på {string} vyn", (pageName) => {
+    cy.url().should('contain', pageName);
+})
+
+And("m det finns ett {string} fält", (fieldName) => {
+    cy.get(fieldName).should('be.visible');
+})
+
+Then("m får jag pop-up ruta med texten {string}", (text) => {
+    cy.get('.MuiSnackbar-root > .MuiPaper-root').should('contain', text);
+})
