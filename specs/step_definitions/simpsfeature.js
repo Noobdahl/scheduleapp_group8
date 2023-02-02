@@ -40,33 +40,23 @@ And("s that i have clicked create", () => {
   cy.get('.MuiToolbar-root > a.MuiButton-root').click();
 })
 
-And('s that i have filled out {string} and {int} and {int}', (title, unit, netPrice) => {
+And("s have filled out {string} and {int} and {string}", (title, unit, netPrice) => {
   cy.get('#title').type(title);
   cy.get('#unit').type(unit);
   cy.get('#netPrice').type(netPrice);
 })
 
-// Then("s i press save", () => {
-//   cy.get('.RaToolbar-defaultToolbar > .MuiButton-root').click
-// })
+Then("s i press save", () => {
+  cy.get('.RaToolbar-defaultToolbar > .MuiButton-root').click();
+})
 
 
+//Delete the newly created element
 
+And("s that im in page 2", () => {
+  cy.get('[data-testid="NavigateNextIcon"]').click();
+})
 
-
-
-// test
-
-// import { Given, When, And, Then } from "@badeball/cypress-cucumber-preprocessor";
-
-// Given('that I am logged into admin', () => {
-//     cy.visit('/login.html')
-//     cy.get('#email').type('exempel@school.net')
-//     cy.get('#password').type('abc123')
-//     cy.get('#login > input[type=submit]').click()
-//     cy.visit('/admin')
-// });
-
-// When('I navigate to the teachers page', () => {
-//     cy.get('.RaLayout-appFrame a:nth-child(2)').click()
-// });
+And("s that id {string} is marked", () => {
+  
+})
