@@ -22,7 +22,9 @@ And("g klickar på till idag", () => {
 
 // Scenario: Komma till dagen datum
 Then("g så kommer jag till dagens datum", () => {
-  cy.get('aside > table > tbody > .today > :nth-child(1)').should('contain', "2023");
+  // cy.wrap(new Date().toISOString()).should('contain', cy.get('aside > table > tbody > .today > :nth-child(1)').toS());
+  
+  cy.get('aside > table > tbody > .today > :nth-child(1)').should('contain', new Date().toISOString());
 })
 
 // Scenario: Komma till inställningar

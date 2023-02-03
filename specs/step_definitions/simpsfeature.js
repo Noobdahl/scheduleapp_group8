@@ -60,7 +60,7 @@ And("s that im in page 2", () => {
 
 And("s that id {string} is marked", () => {
     cy.wait(500);
-    cy.get('[data-testid="NavigateNextIcon"]').click();
+   // cy.get('[data-testid="NavigateNextIcon"]').click();
     cy.wait(500);
 
     cy.get('.MuiTableBody-root').contains('Example invoice').then(($el) => {
