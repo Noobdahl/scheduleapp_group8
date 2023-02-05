@@ -60,36 +60,17 @@ And("s that im in page 2", () => {
 
 And("s that id {string} is marked", () => {
   cy.wait(500);
-  cy.wait(500);
-
   cy.get('.MuiTableBody-root').contains('Example invoice').then(($el) => {
-      const nthChild = $el.closest('.MuiTableRow-root').index() + 1;
-      cy.wait(500).get(`:nth-child(${nthChild}) > .column-name > .MuiTypography-root`)
-        .should('be.visible')
-        .then(() => {
-          cy.get(':nth-child(1) > .column-undefined > .MuiButton-root').click();
+          const nthChild = $el.closest('.MuiTableRow-root').index() + 1;
+          cy.wait(500).get(`:nth-child(${nthChild}) > .column-title > .MuiTypography-root`)
+            .should('be.visible')
+            .then(() => {
+              cy.get(`.MuiTableBody-root > :nth-child(${nthChild}) > .MuiTableCell-paddingCheckbox > .MuiCheckbox-root > .PrivateSwitchBase-input`).click();
+            });
         });
-      });
-  
-  
-  
-  
-  
-  
-  //   cy.wait(500);
-  //  // cy.get('[data-testid="NavigateNextIcon"]').click();
-  //   cy.wait(500);
-
-  //   cy.get('.MuiTableBody-root').contains('Example invoice').then(($el) => {
-  //       const nthChild = $el.closest('.MuiTableRow-root').index() + 1;
-  //       cy.wait(500).get(`:nth-child(${nthChild}) > .column-name > .MuiTypography-root`)
-  //         .should('be.visible')
-  //         .then(() => {
-  //           cy.get(`:nth-child(${nthChild}) > .column-undefined > .MuiButton-root`).click();
-  //         });
-  //     });
 })
 
 Then("s delete this element", () => {
   cy.get('[data-test="bulk-actions-toolbar"] > .MuiToolbar-root > .MuiButton-root').click();
+  cy.get('.MuiSnackbar-root > .MuiPaper-root').should('contain', 'Element deleted');
 })
